@@ -28,16 +28,16 @@ function ProjectCard({ project }: { project: Project }) {
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40" />
-      <div className="relative flex h-full flex-col justify-between p-8">
+      <div className="relative flex h-full flex-col justify-between p-6">
         <div className="flex items-center gap-2">
           <a
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.title} on GitHub`}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d={GITHUB_PATH} />
             </svg>
           </a>
@@ -46,9 +46,9 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 items-center gap-1.5 rounded-full bg-black/40 px-3 text-xs font-medium text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+              className="flex h-9 items-center gap-1.5 rounded-full bg-black/40 px-3 text-xs font-medium text-white backdrop-blur-sm transition-colors hover:bg-black/60"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5v14l11-7z" />
               </svg>
               Watch demo
@@ -56,10 +56,10 @@ function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
         <div>
-          <h3 className="text-2xl font-bold text-white drop-shadow sm:text-3xl">
+          <h3 className="text-xl font-bold text-white drop-shadow sm:text-2xl">
             {project.title}
           </h3>
-          <p className="mt-3 max-w-md text-sm leading-relaxed text-white/90 drop-shadow sm:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-white/90 drop-shadow">
             {project.description}
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function ProjectsSection() {
       {projects && projects.length > 0 && (
         <>
           <div
-            className="relative h-[55vh] w-full max-w-2xl touch-pan-y select-none overflow-hidden"
+            className="relative h-[64vh] max-h-[620px] w-full max-w-xs touch-pan-y select-none overflow-visible"
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
@@ -164,11 +164,11 @@ export default function ProjectsSection() {
               return (
                 <div
                   key={project.title}
-                  className={`absolute inset-y-0 inset-x-6 overflow-hidden rounded-3xl shadow-2xl ${
+                  className={`absolute inset-0 overflow-hidden rounded-3xl shadow-2xl ${
                     dragX === null ? "transition-transform duration-300 ease-out" : ""
                   }`}
                   style={{
-                    transform: `translateX(calc(${offset * 86}% + ${dragPx}px)) scale(${
+                    transform: `translateX(calc(${offset * 92}% + ${dragPx}px)) scale(${
                       isActive ? 1 : 0.85
                     })`,
                     zIndex: isActive ? 10 : 5,

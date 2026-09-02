@@ -44,7 +44,7 @@ const FALLBACK_IMAGE =
 // Curated Unsplash photos matched to what each project actually is.
 const THUMBNAIL_IMAGES: Record<string, string> = {
   "runbook-executor":
-    "https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1610337673044-720471f83677?auto=format&fit=crop&w=1200&q=80",
   iqoo:
     "https://images.unsplash.com/photo-1523371683773-affcb4a2e39e?auto=format&fit=crop&w=1200&q=80",
   "ml-platform":
