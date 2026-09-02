@@ -318,7 +318,7 @@ export default function GlyphField() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-0"
+      className="absolute inset-0 z-0"
       aria-hidden="true"
     />
   );

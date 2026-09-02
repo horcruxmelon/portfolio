@@ -1,6 +1,6 @@
 export default function SocialLinks() {
   return (
-    <div className="fixed bottom-6 right-6 z-20 flex flex-row items-center gap-4 sm:bottom-8 sm:right-10">
+    <div className="fixed bottom-6 right-6 z-30 flex flex-row items-center gap-4 sm:bottom-8 sm:right-10">
       <a
         href="https://www.linkedin.com/in/hrishi-menon-m"
         target="_blank"
