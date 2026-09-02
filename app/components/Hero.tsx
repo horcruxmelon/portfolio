@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 
 const EN_NAME = "Hrishi Menon M";
-const ML_NAME = "ഋഷി മേനോൻ എം";
 const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#01";
 const FRAME_MS = 35;
 const REVEAL_STEP = 2;
@@ -17,7 +16,6 @@ function toClusters(str: string): string[] {
 }
 
 const EN_CLUSTERS = toClusters(EN_NAME);
-const ML_CLUSTERS = toClusters(ML_NAME);
 
 function randomChar() {
   return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
@@ -30,14 +28,12 @@ function toCells(clusters: string[]): Cell[] {
 }
 
 export default function Hero() {
-  const [lang, setLang] = useState<"en" | "ml">("en");
   const [cells, setCells] = useState<Cell[]>(toCells(EN_CLUSTERS));
   const runId = useRef(0);
   const timeoutRef = useRef<number | undefined>(undefined);
 
   const revealTo = (
     target: string[],
-    nextLang: "en" | "ml",
     frameMs: number = FRAME_MS,
     revealStep: number = REVEAL_STEP
   ) => {
@@ -58,8 +54,6 @@ export default function Hero() {
       frame++;
       if (frame <= totalFrames) {
         timeoutRef.current = window.setTimeout(tick, frameMs);
-      } else {
-        setLang(nextLang);
       }
     };
     tick();
@@ -67,18 +61,14 @@ export default function Hero() {
 
   useEffect(() => {
     timeoutRef.current = window.setTimeout(() => {
-      revealTo(EN_CLUSTERS, "en", 75, 3);
+      revealTo(EN_CLUSTERS, 75, 3);
     }, 500);
     return () => {
       if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
     };
   }, []);
 
-  const scramble = () => {
-    const nextLang = lang === "en" ? "ml" : "en";
-    const target = nextLang === "ml" ? ML_CLUSTERS : EN_CLUSTERS;
-    revealTo(target, nextLang);
-  };
+  const scramble = () => revealTo(EN_CLUSTERS);
 
   return (
     <main className="pointer-events-none relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 px-4 text-center">
